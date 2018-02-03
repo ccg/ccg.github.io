@@ -1,3 +1,7 @@
 blogdown
 public
 .Rproj.user
+
+.Rhistory
+.Rapp.history
+.RData
