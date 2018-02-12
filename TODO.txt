@@ -18,3 +18,7 @@ Host ?
   User ???
   Port ???
 ```
+
+Maybe use `IdentityFile`:
+
+https://unix.stackexchange.com/questions/127352/specify-identity-file-id-rsa-with-rsync
