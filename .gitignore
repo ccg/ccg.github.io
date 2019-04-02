@@ -1,8 +1,6 @@
 blogdown
 public
 
-deploy.sh
-
 .Rproj.user
 .Rhistory
 .Rapp.history
