@@ -9,13 +9,17 @@ tags: []
 
 # Intro
 
-In late 2017, I purchased the [HAVIT Low-Profile 87-Key keyboard](https://amzn.to/2IbNMST). (Full disclosure: Amazon affiliate link.) It's one of the best keyboards I've owned. I'm a fan of mechanical keyboards, but I don't always like the long key-strokes required on those keyboards, and they're often way too loud. This keyboard solves both those problems. The keystrokes are not quite as shallow as they are on an Apple keyboard, but I find it easier to type on than something like an IBM Model M keyboard with the old-fashioned buckling-spring keys. It's also somewhat quieter. It might still be a bit loud for an office setting (unless you're lucky enough to have a private office, which most software engineers are not), but I find that it's OK for a home office without driving my wife insane.
+In late 2017, I purchased the [HAVIT Low-Profile 87-Key keyboard](https://amzn.to/2IbNMST). (Full disclosure: Amazon affiliate link.) It's one of the best keyboards I've owned. I'm a fan of mechanical keyboards, but I don't always like the long keystrokes required on those keyboards, and they're often way too loud. This keyboard solves both those problems using the Kailh blue low-profile switches. The keystrokes are not quite as shallow as they are on an Apple keyboard, but I find it easier to type on than something like an IBM Model M keyboard with the old-fashioned buckling-spring keys. It's also somewhat quieter. It might still be a bit loud for an office setting, but I find that it's OK for a home office without driving my wife insane.
 
-# Basic Setup
+I'm also a big fan of the "tenkeyless" (87-key) keyboards like this one. I never use the numeric keypad when my keyboard has one, and with a tenkeyless keyboard, I can get my mouse closer to the centerline, which I find to be better ergonomically. Then again, 87-key keyboards like this one still have full-size navigation keys (arrows, page-up and page-down, etc.) and a full-size Control key on the right side.
 
-Unfortunately for Mac users, the keyboard has a PC layout. The following describes how to configure this keyboard for use on a Mac.
+This keyboard also has a backlight that is a slightly greenish, ice-blue color. It can be programmed with various animation effects on the backlight. It's a bit of a gimmic, but it's nice to have.
 
-The first step is easy and does not require any third-party software. Mac and PC keyboards disagree about the position of the Command (Alt) and Option (Windows/Menu) keys. On the Mac, open System Preferences, then Modifier Keys:
+# Set Up As Your Only Keyboard
+
+Unfortunately for Mac users, the keyboard has a PC layout. If it's going to be your only keyboard, then you can set it up without any third-party software.
+
+Mac and PC keyboards disagree about the position of the Command (Alt) and Option (Windows/Menu) keys. On the Mac, open System Preferences, then Modifier Keys:
 
 ![System Preferences](../../../../img/2019/system-preferences.png)
 
@@ -38,6 +42,19 @@ Then set `From key` to `application` and `To key` to `right_gui`.
 ![Karabiner: Fix Right Option Key](../../../../img/2019/right-option.png)
 
 This setup fixes the majority of use cases.
+
+# Set Up As An External Keyboard
+
+In my setup, I use this keyboard as an external keyboard when my laptop is plugged in on my desktop with an external monitor, but sometimes I use my laptop by itself without this keyboard. For that use case, swapping the Command and Option keys in System Preferences does not do what I would want, because it swaps those keys for the built-in laptop keyboard as well.
+
+I found that a better setup uses the Karabiner app (see above) exclusively to reconfigure the keyboard layout. If you changed the modifier keys in the System Preferences app, put it back to the default configuration. In the Karabiner app, under `Target Device` select `USB-HID Keyboard (HOLTEK)` and then set up the following mappings:
+
+* `left_alt` to `left_gui`
+* `left_gui` to `left_alt`
+* `right_alt` to `right_gui`
+* `application` to `right_alt`
+
+![Karabiner: Fix Right Option Key](../../../../img/2019/karabiner-all-modifier-keys.png)
 
 # Developer Setup
 
