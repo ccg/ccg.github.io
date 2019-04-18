@@ -5,4 +5,6 @@ if [ x"${CCG_WEB_USER}" == x ]; then
   exit 1
 fi
 
-rsync -az public "${CCG_WEB_USER}@glendenin.com:webroot/chad.glendenin.com/"
+echo "Did you remember to build the site first?"
+
+rsync -avz public "${CCG_WEB_USER}@glendenin.com:webroot/chad.glendenin.com/"
