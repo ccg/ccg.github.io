@@ -1,5 +1,5 @@
 ---
-title: HAVIT Low-Profile Mechanical Keyboard
+title: HAVIT Low-Profile 87-Key Mechanical Keyboard Review
 author: Chad Glendenin
 date: '2019-04-01'
 slug: havit-low-profile-mechanical-keyboard
