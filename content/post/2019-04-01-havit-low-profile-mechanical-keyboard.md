@@ -13,7 +13,7 @@ In late 2017, I purchased the [HAVIT Low-Profile 87-Key keyboard](https://amzn.t
 
 I'm also a big fan of the "tenkeyless" (87-key) keyboards like this one. I never use the numeric keypad when my keyboard has one, and with a tenkeyless keyboard, I can get my mouse closer to the centerline, which I find to be better ergonomically. Then again, 87-key keyboards like this one still have full-size navigation keys (arrows, page-up and page-down, etc.) and a full-size Control key on the right side.
 
-This keyboard also has a backlight that is a slightly greenish, ice-blue color. It can be programmed with various animation effects on the backlight. It's a bit of a gimmic, but it's nice to have.
+This keyboard also has a backlight that is a slightly greenish, ice-blue color. It can be programmed with various animation effects on the backlight. It's a bit of a gimmick, but it's nice to have.
 
 # Set Up As Your Only Keyboard
 
