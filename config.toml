@@ -6,6 +6,9 @@ googleAnalytics = "UA-35516212-1"
 disqusShortname = ""
 ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 
+[markup.goldmark.renderer]
+    unsafe = true
+
 [permalinks]
     post = "/:year/:month/:day/:slug/"
 
