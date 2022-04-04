@@ -21,11 +21,11 @@ Unfortunately for Mac users, the keyboard has a PC layout. If it's going to be y
 
 Mac and PC keyboards disagree about the position of the Command (Alt) and Option (Windows/Menu) keys. On the Mac, open System Preferences, then Modifier Keys:
 
-![System Preferences](../../../../img/2019/system-preferences.png)
+![System Preferences](/images/2019/system-preferences.png)
 
-![Modifier Keys](../../../../img/2019/modifier-keys.png)
+![Modifier Keys](/images/2019/modifier-keys.png)
 
-![Command-Option Swap](../../../../img/2019/command-option.png)
+![Command-Option Swap](/images/2019/command-option.png)
 
 # Fixing the Right Option Key
 
@@ -35,11 +35,11 @@ After installing it, the configuration is simple:
 
 Open `Karabiner-Elements` and then, under `Target Device`, choose your keyboard (for me, it's `USB-HID Keyboard (HOLTEK)`), then under `Simple Modifications`, choose `Add Item`.
 
-![Karabiner: Add Item](../../../../img/2019/karabiner-add-item.png)
+![Karabiner: Add Item](/images/2019/karabiner-add-item.png)
 
 Then set `From key` to `application` and `To key` to `right_gui`.
 
-![Karabiner: Fix Right Option Key](../../../../img/2019/right-option.png)
+![Karabiner: Fix Right Option Key](/images/2019/right-option.png)
 
 This setup fixes the majority of use cases.
 
@@ -54,7 +54,7 @@ I found that a better setup uses the Karabiner app (see above) exclusively to re
 * `right_alt` to `right_gui`
 * `application` to `right_alt`
 
-![Karabiner: Fix Right Option Key](../../../../img/2019/karabiner-all-modifier-keys.png)
+![Karabiner: Fix Right Option Key](/images/2019/karabiner-all-modifier-keys.png)
 
 # Developer Setup
 

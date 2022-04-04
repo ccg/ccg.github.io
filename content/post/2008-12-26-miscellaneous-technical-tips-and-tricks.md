@@ -19,12 +19,10 @@ $ROUTE $QUIET add net default 192.168.0.1
 
 Set the environment variable `$SGI_ANIM` in your shell to the value `/var/netscape/communicator/anim_cube.dat` to get the original, spinning-cube SGI logo as the throbber animation in Netscape. There are animations in that directory too.
 
-<a href="../../../../img/2008/sgi-netscape.png">
-  <img src="../../../../img/2008/thumbnail/sgi-netscape.png"/>
-</a>
-<a href="../../../../img/2008/sgi-netscape-google.png">
-  <img src="../../../../img/2008/thumbnail/sgi-netscape-google.png"/>
-</a>
+
+![Netscape with SGI Logo](/images/2008/sgi-netscape.png)
+
+![Netscape with SGI Logo on google.com](/images/2008/sgi-netscape-google.png)
 
 # Thinkpad T41p, Ubuntu 8.04.1 LTS, and Clicking Hard Drive
 

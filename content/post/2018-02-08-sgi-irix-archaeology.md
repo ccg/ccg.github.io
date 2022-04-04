@@ -13,10 +13,10 @@ these things might have a tiny amount of value to future historians.
 
 # UI for SGI 1600SW Flat-Panel Display in IRIX 6.5
 
-![SGI 1600SW Config UI in IRIX 6.5](../../../../img/2018/irix-1600sw.png)
+![SGI 1600SW Config UI in IRIX 6.5](/images/2018/irix-1600sw.png)
 
 # UI for SGI Presenter display in IRIX
 
 The SGI Presenter panels are even rarer than the 1600sw, so here's a screenshot of the IRIX UI for a Presenter:
 
-![UI for SGI Presenter display in IRIX](../../../../img/2018/irix-presenter-ui.png)
+![UI for SGI Presenter display in IRIX](/images/2018/irix-presenter-ui.png)

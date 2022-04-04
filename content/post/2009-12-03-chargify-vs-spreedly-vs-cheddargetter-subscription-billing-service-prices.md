@@ -9,15 +9,15 @@ tags: []
 
 We're looking at [chargify.com](http://chargify.com), [spreedly.com](http://spreedly.com), and [cheddargetter.com](http://cheddargetter.com) to manage subscriptions for a SaaS web app we're developing at pybrew.com. I made some graphs to see how their prices scale with the number of customers they're managing for your business.
 
-![50 Customers](/img/2009/12/price-compare/00050.png)
-![100 Customers](/img/2009/12/price-compare/00100.png)
-![200 Customers](/img/2009/12/price-compare/00200.png)
-![500 Customers](/img/2009/12/price-compare/00500.png)
-![1000 Customers](/img/2009/12/price-compare/01000.png)
-![5000 Customers](/img/2009/12/price-compare/05000.png)
-![10000 Customers](/img/2009/12/price-compare/10000.png)
-![15000 Customers](/img/2009/12/price-compare/15000.png)
-![20000 Customers](/img/2009/12/price-compare/20000.png)
+![50 Customers](/images/2009/12/price-compare/00050.png)
+![100 Customers](/images/2009/12/price-compare/00100.png)
+![200 Customers](/images/2009/12/price-compare/00200.png)
+![500 Customers](/images/2009/12/price-compare/00500.png)
+![1000 Customers](/images/2009/12/price-compare/01000.png)
+![5000 Customers](/images/2009/12/price-compare/05000.png)
+![10000 Customers](/images/2009/12/price-compare/10000.png)
+![15000 Customers](/images/2009/12/price-compare/15000.png)
+![20000 Customers](/images/2009/12/price-compare/20000.png)
 
 Spreedly charges _per transaction_, whereas chargify and cheddargetter charge
 _per customer_. For these graphs, I'm assuming that it's simply one transaction
