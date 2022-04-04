@@ -1,7 +1,10 @@
 blogdown
-public
+/public/
 
 .Rproj.user
 .Rhistory
 .Rapp.history
 .RData
+
+# Temporary lock file while building
+/.hugo_build.lock
