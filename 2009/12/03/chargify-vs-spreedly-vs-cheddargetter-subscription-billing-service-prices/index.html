@@ -1,0 +1,145 @@
+<!doctype html><html lang=en-us><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.96.0"><title>Chargify vs. Spreedly vs. Cheddargetter: Subscription-Billing Service Prices - Chad Glendenin</title><meta property="og:title" content="Chargify vs. Spreedly vs. Cheddargetter: Subscription-Billing Service Prices - Chad Glendenin"><link href=//cdn.bootcss.com/highlight.js/9.11.0/styles/github.min.css rel=stylesheet type=text/css><link rel=stylesheet href=/css/fonts.css media=all><link rel=stylesheet href=/css/main.css media=all></head><body><div class=wrapper><header class=header><nav class=nav><a href=/ class=nav-logo><img src=/images/ccg.png width=50 height=50 alt=Logo></a><ul class=nav-links><li><a href=/about/>About</a></li><li><a href=https://github.com/ccg>GitHub</a></li><li><a href=https://twitter.com/ccglen>Twitter</a></li></ul></nav></header><main class=content role=main><article class=article><span class=article-duration>4 min read</span><h1 class=article-title>Chargify vs. Spreedly vs. Cheddargetter: Subscription-Billing Service Prices</h1><span class=article-date>2009-12-03</span><div class=article-content><p>We&rsquo;re looking at <a href=http://chargify.com>chargify.com</a>, <a href=http://spreedly.com>spreedly.com</a>, and <a href=http://cheddargetter.com>cheddargetter.com</a> to manage subscriptions for a SaaS web app we&rsquo;re developing at pybrew.com. I made some graphs to see how their prices scale with the number of customers they&rsquo;re managing for your business.</p><p><img src=/img/2009/12/price-compare/00050.png alt="50 Customers">
+<img src=/img/2009/12/price-compare/00100.png alt="100 Customers">
+<img src=/img/2009/12/price-compare/00200.png alt="200 Customers">
+<img src=/img/2009/12/price-compare/00500.png alt="500 Customers">
+<img src=/img/2009/12/price-compare/01000.png alt="1000 Customers">
+<img src=/img/2009/12/price-compare/05000.png alt="5000 Customers">
+<img src=/img/2009/12/price-compare/10000.png alt="10000 Customers">
+<img src=/img/2009/12/price-compare/15000.png alt="15000 Customers">
+<img src=/img/2009/12/price-compare/20000.png alt="20000 Customers"></p><p>Spreedly charges <em>per transaction</em>, whereas chargify and cheddargetter charge
+<em>per customer</em>. For these graphs, I&rsquo;m assuming that it&rsquo;s simply one transaction
+per customer per month, but spreedly&rsquo;s curve will go up or down if you charge
+more or less frequently than monthly. Also, I didn&rsquo;t include any costs from
+payment gateways like authorize.net.</p><p>In a few places, these graphs make it look like there are some big price
+differences. However, after looking at it for a while, I&rsquo;m not sure that the
+differences are significant. The most noticeable one is where the chargify
+price jumps when you get your 501st customer. At that point, you&rsquo;d be paying
+$249/month for chargify but only $119.20 for spreedly or only $39.00 for
+cheddargetter. But, if you&rsquo;re charging, say, $15/month for your app, and you
+have 501 customers, then you&rsquo;re getting $7,515/month in revenue, and the
+difference of $210 between chargify and cheddargetter is about 2.8% of your
+revenue, which is the biggest difference in percentage of revenue that I can
+find in the first 20,000 customers. Once you get past 1,150 customers, spreedly
+is always the most expensive, but the difference is generally around 1% of
+revenue, assuming a $15/customer/month subscription model.</p><p>There&rsquo;s another change at 50,000 customers, which is where the cheddargetter
+cost begins increasing again, so eventually it will cross the chargify curve,
+which is fixed at $2,499 for unlimited customers. However, I stopped the graphs
+at 20,000 customers, because I figure, at that point, with a $15/month
+subscription, you&rsquo;re bringing in $300,000 per month, so you can afford to do
+pretty much whatever you want.</p><p>For a startup, getting to the point of having 50 paying customers is the
+hardest and probably takes the most time, and with chargify, those first 50 are
+free, but overall, I&rsquo;m not convinced that the price differences alone are
+enough to make a decision between the three. You might want to choose based on
+some combination of price and features. As primarily Python coders, we like
+that Spreedly already has a Django app, thanks to Chris Drackett.</p><p>Here&rsquo;s the quick-and-dirty Python script I wrote to generate the numbers.
+(Please let me know if you catch a mistake!)</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#75715e>#!/usr/bin/env python</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>spreedly</span>(transactions):
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>19</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>.20</span><span style=color:#f92672>*</span>transactions
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>cheddargetter</span>(customers):
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>_basic</span>(customers):
+</span></span><span style=display:flex><span>        cost <span style=color:#f92672>=</span> <span style=color:#ae81ff>39.00</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> customers <span style=color:#f92672>&gt;</span> <span style=color:#ae81ff>1000</span>:
+</span></span><span style=display:flex><span>            cost <span style=color:#f92672>+=</span> <span style=color:#ae81ff>.19</span><span style=color:#f92672>*</span>(customers<span style=color:#f92672>-</span><span style=color:#ae81ff>1000</span>)
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> cost
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>_advanced</span>(customers):
+</span></span><span style=display:flex><span>        cost <span style=color:#f92672>=</span> <span style=color:#ae81ff>169.00</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> customers <span style=color:#f92672>&gt;</span> <span style=color:#ae81ff>10000</span>:
+</span></span><span style=display:flex><span>            cost <span style=color:#f92672>+=</span> <span style=color:#ae81ff>.06</span><span style=color:#f92672>*</span>(customers<span style=color:#f92672>-</span><span style=color:#ae81ff>10000</span>)
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> cost
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>_premium</span>(customers):
+</span></span><span style=display:flex><span>        cost <span style=color:#f92672>=</span> <span style=color:#ae81ff>549.00</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> customers <span style=color:#f92672>&gt;</span> <span style=color:#ae81ff>50000</span>:
+</span></span><span style=display:flex><span>            cost <span style=color:#f92672>+=</span> <span style=color:#ae81ff>.02</span><span style=color:#f92672>*</span>(customers<span style=color:#f92672>-</span><span style=color:#ae81ff>50000</span>)
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> cost
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> customers <span style=color:#f92672>&lt;=</span> <span style=color:#ae81ff>20</span>:
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>0.00</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>else</span>:
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> min(_basic(customers), _advanced(customers), _premium(customers))
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>chargify</span>(customers):
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> customers <span style=color:#f92672>&gt;</span> <span style=color:#ae81ff>15000</span>:
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>2499.</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> customers <span style=color:#f92672>&gt;</span> <span style=color:#ae81ff>10000</span>:
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>1499.</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> customers <span style=color:#f92672>&gt;</span> <span style=color:#ae81ff>5000</span>:
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>749.</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> customers <span style=color:#f92672>&gt;</span> <span style=color:#ae81ff>500</span>:
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>249.</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> customers <span style=color:#f92672>&gt;</span> <span style=color:#ae81ff>50</span>:
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>49.</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>0.</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>if</span> __name__ <span style=color:#f92672>==</span> <span style=color:#e6db74>&#39;__main__&#39;</span>:
+</span></span><span style=display:flex><span>    max_customers <span style=color:#f92672>=</span> <span style=color:#ae81ff>20001</span>
+</span></span><span style=display:flex><span>    f <span style=color:#f92672>=</span> open(<span style=color:#e6db74>&#39;prices.txt&#39;</span>,<span style=color:#e6db74>&#39;w&#39;</span>)
+</span></span><span style=display:flex><span>    print <span style=color:#f92672>&gt;&gt;</span>f, <span style=color:#e6db74>&#34;# num_customers</span><span style=color:#ae81ff>\t</span><span style=color:#e6db74>chargify</span><span style=color:#ae81ff>\t</span><span style=color:#e6db74>spreedly</span><span style=color:#ae81ff>\t</span><span style=color:#e6db74>cheddargetter</span><span style=color:#ae81ff>\t</span><span style=color:#e6db74>spread</span><span style=color:#ae81ff>\t</span><span style=color:#e6db74>revenue</span><span style=color:#ae81ff>\t</span><span style=color:#e6db74>percent_diff&#34;</span>
+</span></span><span style=display:flex><span>    max_spread <span style=color:#f92672>=</span> <span style=color:#ae81ff>0.</span>
+</span></span><span style=display:flex><span>    max_percent_diff <span style=color:#f92672>=</span> <span style=color:#ae81ff>0.</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span> c <span style=color:#f92672>in</span> xrange(max_customers):
+</span></span><span style=display:flex><span>        cha <span style=color:#f92672>=</span> chargify(c)
+</span></span><span style=display:flex><span>        spr <span style=color:#f92672>=</span> spreedly(c)
+</span></span><span style=display:flex><span>        che <span style=color:#f92672>=</span> cheddargetter(c)
+</span></span><span style=display:flex><span>        spread <span style=color:#f92672>=</span> max(cha,spr,che) <span style=color:#f92672>-</span> min(cha,spr,che)
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> spread <span style=color:#f92672>&gt;</span> max_spread: max_spread <span style=color:#f92672>=</span> spread
+</span></span><span style=display:flex><span>        revenue <span style=color:#f92672>=</span> c <span style=color:#f92672>*</span> <span style=color:#ae81ff>15.00</span>
+</span></span><span style=display:flex><span>        percent_diff <span style=color:#f92672>=</span> revenue <span style=color:#f92672>&gt;</span> <span style=color:#ae81ff>0.</span> <span style=color:#f92672>and</span> (<span style=color:#ae81ff>100.</span> <span style=color:#f92672>*</span> (spread<span style=color:#f92672>/</span>revenue)) <span style=color:#f92672>or</span> <span style=color:#ae81ff>0.</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> c <span style=color:#f92672>&gt;</span> <span style=color:#ae81ff>50</span> <span style=color:#f92672>and</span> percent_diff <span style=color:#f92672>&gt;</span> max_percent_diff:
+</span></span><span style=display:flex><span>            max_percent_diff <span style=color:#f92672>=</span> percent_diff
+</span></span><span style=display:flex><span>        print <span style=color:#f92672>&gt;&gt;</span>f, <span style=color:#e6db74>&#34;</span><span style=color:#e6db74>%d</span><span style=color:#e6db74>&#34;</span> <span style=color:#f92672>%</span> c,
+</span></span><span style=display:flex><span>        print <span style=color:#f92672>&gt;&gt;</span>f, <span style=color:#e6db74>&#34;</span><span style=color:#ae81ff>\t</span><span style=color:#e6db74>%.02f</span><span style=color:#e6db74>&#34;</span> <span style=color:#f92672>%</span> chargify(c),
+</span></span><span style=display:flex><span>        print <span style=color:#f92672>&gt;&gt;</span>f, <span style=color:#e6db74>&#34;</span><span style=color:#ae81ff>\t</span><span style=color:#e6db74>%.02f</span><span style=color:#e6db74>&#34;</span> <span style=color:#f92672>%</span> spreedly(c),
+</span></span><span style=display:flex><span>        print <span style=color:#f92672>&gt;&gt;</span>f, <span style=color:#e6db74>&#34;</span><span style=color:#ae81ff>\t</span><span style=color:#e6db74>%.02f</span><span style=color:#e6db74>&#34;</span> <span style=color:#f92672>%</span> cheddargetter(c),
+</span></span><span style=display:flex><span>        print <span style=color:#f92672>&gt;&gt;</span>f, <span style=color:#e6db74>&#34;</span><span style=color:#ae81ff>\t</span><span style=color:#e6db74>%.02f</span><span style=color:#e6db74>&#34;</span> <span style=color:#f92672>%</span> spread,
+</span></span><span style=display:flex><span>        print <span style=color:#f92672>&gt;&gt;</span>f, <span style=color:#e6db74>&#34;</span><span style=color:#ae81ff>\t</span><span style=color:#e6db74>%.02f</span><span style=color:#e6db74>&#34;</span> <span style=color:#f92672>%</span> revenue,
+</span></span><span style=display:flex><span>        print <span style=color:#f92672>&gt;&gt;</span>f, <span style=color:#e6db74>&#34;</span><span style=color:#ae81ff>\t</span><span style=color:#e6db74>%.02f</span><span style=color:#e6db74>&#34;</span> <span style=color:#f92672>%</span> percent_diff
+</span></span><span style=display:flex><span>    f<span style=color:#f92672>.</span>close()
+</span></span><span style=display:flex><span>    print <span style=color:#e6db74>&#34;max spread (diff between cheapest and most expensive):&#34;</span>, max_spread
+</span></span><span style=display:flex><span>    print <span style=color:#e6db74>&#34;max percent diff (spread/revenue):&#34;</span>, max_percent_diff
+</span></span></code></pre></div><p>Here&rsquo;s the gnuplot script I wrote to make the graphs.</p><pre tabindex=0><code>set key left
+set grid
+set xlabel &#39;number of customers&#39;
+set ylabel &#39;monthly prices ($)&#39;
+set terminal png
+set xrange[0:50]
+set output &#39;00050.png&#39;
+plot &#39;prices.txt&#39; using 1:2 title &#39;chargify&#39;, \
+     &#39;prices.txt&#39; using 1:3 title &#39;spreedly&#39;, \
+     &#39;prices.txt&#39; using 1:4 title &#39;cheddargetter&#39;
+set xrange[0:100]
+set output &#39;00100.png&#39;
+replot
+set xrange[0:200]
+set output &#39;00200.png&#39;
+replot
+set xrange[0:500]
+set output &#39;00500.png&#39;
+replot
+set xrange[0:1000]
+set output &#39;01000.png&#39;
+replot
+set xrange[0:5000]
+set output &#39;05000.png&#39;
+replot
+set xrange[0:10000]
+set output &#39;10000.png&#39;
+replot
+set xrange[0:15000]
+set output &#39;15000.png&#39;
+replot
+set xrange[0:20000]
+set output &#39;20000.png&#39;
+replot
+</code></pre><p><em>Update 2013-01-07:</em> When I migrated from posterous.com to Octopress, I was
+unable to migrate the comments from the original post into Disqus, so I&rsquo;m just
+copying them below so they don&rsquo;t get lost.</p><p><em>Update 2018-02-08:</em> The code has been on GitHub for some time now:
+<a href=https://github.com/ccg/billing-service-price-comparison>https://github.com/ccg/billing-service-price-comparison</a></p><hr></div></article></main><footer class=footer><ul class=footer-links><li><a href=/index.xml type=application/rss+xml target=_blank>RSS feed</a></li><li><a href=https://gohugo.io/ class=footer-links-kudos>Made with <img src=/images/hugo-logo.png alt="Img link to Hugo website" width=22 height=22></a></li></ul></footer></div><script src=//cdn.bootcss.com/highlight.js/9.11.0/highlight.min.js></script>
+<script src=//cdn.bootcss.com/highlight.js/9.11.0/languages/r.min.js></script>
+<script src=//cdn.bootcss.com/highlight.js/9.11.0/languages/yaml.min.js></script>
+<script>hljs.configure({languages:[]}),hljs.initHighlightingOnLoad()</script><script src=/js/math-code.js></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(e,o,i,a,t,n,s){e.GoogleAnalyticsObject=t,e[t]=e[t]||function(){(e[t].q=e[t].q||[]).push(arguments)},e[t].l=1*new Date,n=o.createElement(i),s=o.getElementsByTagName(i)[0],n.async=1,n.src=a,s.parentNode.insertBefore(n,s)}(window,document,"script","https://www.google-analytics.com/analytics.js","ga"),ga("create","UA-35516212-1","auto"),ga("send","pageview"))</script></body></html>
